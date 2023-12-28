@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&family=Libre+Franklin:wght@300;600;700&family=Poppins:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  font-family: "Epilogue", sans-serif;
+  font-size: 18px;
+  user-select: none;
+}
+
+body {
+  background: hsl(0, 0%, 98%);
+}

@@ -1,0 +1,271 @@
+$AlmostWhite: hsl(0, 0%, 98%);
+$Gray: hsl(0, 0%, 41%);
+$Black: hsl(0, 0%, 8%);
+
+.App {
+  min-height: 100vh;
+  // display: grid;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    gap: 3rem;
+    color: $Gray;
+    height: fit-content;
+
+    .menu {
+      display: none;
+    }
+
+    .nav {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .Menu__List {
+        flex: 1;
+        display: flex;
+        gap: 2rem;
+
+        > li {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        > li:hover {
+          color: $Black;
+          cursor: pointer;
+
+          > img {
+            filter: brightness(0);
+          }
+        }
+        .Sub__Menu {
+          position: absolute;
+          top: 2rem;
+          right: 0;
+          background: white;
+          box-shadow: 8px 8px 25px rgba($color: $Black, $alpha: 0.2);
+          padding: 1.5rem 1.2rem;
+          width: max-content;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          border-radius: 0.5rem;
+
+          li {
+            color: $Gray;
+            display: flex;
+            gap: 10px;
+          }
+        }
+      }
+
+      .btns {
+        display: flex;
+        gap: 1.5rem;
+
+        button {
+          border: none;
+          outline: none;
+          background: transparent;
+          cursor: pointer;
+          color: $Gray;
+          &:hover {
+            color: $Black;
+          }
+
+          &:last-child {
+            border: 1px solid rgba($color: $Gray, $alpha: 1);
+            padding: 0.4rem 0.5rem;
+            border-radius: 0.4rem;
+
+            &:hover {
+              border: 1px solid rgba($color: $Black, $alpha: 1);
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 37.5rem) {
+      .backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba($color: $Black, $alpha: 0.5);
+        z-index: 1;
+      }
+      .menu {
+        display: block;
+        z-index: 5;
+      }
+      .nav {
+        background: white;
+        z-index: 4;
+        height: 100vh;
+        width: 70vw;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 4rem;
+        transition: all 0.4s ease-in-out;
+
+        &.active {
+          right: 0;
+        }
+
+        .Menu__List {
+          flex: 0;
+          width: 100%;
+          flex-direction: column;
+          gap: 1rem;
+          padding-left: 1.5rem;
+
+          > li {
+            position: static;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: fit-content;
+
+            .updown {
+              // margin-left: 10px;
+            }
+
+            .Sub__Menu {
+              grid-column: span 2;
+              position: static;
+              top: 0;
+              right: 0;
+              box-shadow: none;
+              padding: 0;
+              display: flex;
+              gap: 0.5rem;
+              border-radius: 0;
+              padding-top: 0.4rem;
+              padding-left: 1rem;
+
+              > li {
+                font-size: 15px;
+              }
+            }
+          }
+        }
+        .btns {
+          width: 100%;
+          padding: 1rem 1.5rem;
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+  .hero {
+    display: grid;
+    grid-template-columns: 55% 40%;
+    padding: 1rem 6.5rem 5rem;
+    height: 100vh;
+    gap: 6rem;
+
+    .text__content {
+      display: grid;
+      padding-top: 5rem;
+
+      .texts {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+
+        h1 {
+          font-size: 4.9rem;
+          padding: 1rem 1rem 0 0.6rem;
+          line-height: 0.9;
+        }
+
+        p {
+          width: 80%;
+          padding-left: 0.6rem;
+          color: $Gray;
+        }
+        button {
+          width: 125px;
+          height: 40px;
+          font-size: 15px;
+          border: 1px solid rgba($color: $Black, $alpha: 1);
+          background: $Black;
+          color: $AlmostWhite;
+          cursor: pointer;
+          margin-left: 0.6rem;
+          border-radius: 10px;
+
+          &:hover {
+            background: $AlmostWhite;
+            color: $Black;
+          }
+        }
+      }
+      .images {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+    .image__content {
+      background: url(./assets/images/image-hero-desktop.png) no-repeat;
+      background-size: contain;
+    }
+
+    @media (max-width: 37.5rem) {
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 0;
+      gap: 0;
+      // height: auto;
+
+      .image__content {
+        background: url(./assets/images/image-hero-mobile.png) no-repeat;
+        background-size: contain;
+        height: 50%;
+      }
+      .text__content {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        text-align: center;
+
+        .texts {
+          gap: 0.5rem;
+
+          h1 {
+            font-size: 2rem;
+            padding: 0;
+          }
+          p {
+            width: 100%;
+          }
+          button {
+            margin: 0.5rem auto 1rem;
+          }
+        }
+        .images {
+          padding: 0 1rem;
+
+          > img {
+            max-width: 20%;
+          }
+        }
+      }
+    }
+  }
+}
